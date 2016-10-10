@@ -1,0 +1,17 @@
+Hive ware house path:
+/apps/hive/warehouse
+=================
+ccA 175 :
+sqoop -
+apache sqoop -getting started - completed 
+sqoop import into hadoop -
+	import-all-tables - if there is no primary key then use mapper as  1 .
+	default delimitter is "," when you import the data from mysql to hdfs.
+	hive uses hdfs as storage and mapreduce as processing engine.
+	in sqoop import we give --outdir java_files  means sqoop internally create java file for each 
+	import of table.so we need to give some separate path for that java file and delete that java file.
+	that java files are simple plain object java file.
+=======================
+sqoop = 
+
+	
