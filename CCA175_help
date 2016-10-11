@@ -11,6 +11,29 @@ sqoop import into hadoop -
 	in sqoop import we give --outdir java_files  means sqoop internally create java file for each 
 	import of table.so we need to give some separate path for that java file and delete that java file.
 	that java files are simple plain object java file.
+	>>Sqoop import with --warehouse-dir and --target-dir are same purpose but if you mentioned warehouse-dir then sqoop will create the 
+	directory in hdfs  but --target-dir - you need to create the folder before importing the data .
+	>>Sqoop import default uses 4 mapper where the primary key constraint is available in table.if the primary contraint is not tehre 
+	then you need to use as "-m 1" mapper is one . .
+	>>--split-by can be used to use multiple threads in case there is no primary key or unique key in the table from source 
+	database. If --split-by is not used we should pass --num-mappers 1.
+>>Sqoop import from mysql to Hive table :
+	Import data from mysql to hive tables and make sude the database and table created in hive,
+	sqoop import --connect "jdbc:mysql://ip-172-31-13-154:3306/retail_db" \
+	--username=sqoopuser \
+	--password=xxxxxx \
+	--table departments \
+	--hive-home /apps/hive/warehouse \  - it is optional parameter.
+	--hive-import \
+	--hive-overwrite \
+	--hive-table sqoop_import_1979.departments 
+>>import to hive table with single mapper ,so that it will cerate one single output file .
+sqoop import --connect "jdbc:mysql://ip-172-31-13-154:3306/retail_db" --username=sqoopuser \
+--password=NHkkxx \
+--table departments --hive-home /apps/hive/warehouse 
+--hive-import --hive-overwrite --hive-table sqoop_import_1979.departments -m 1
+
+
 =======================
 sqoop = 
 
